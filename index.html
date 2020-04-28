@@ -37,10 +37,16 @@ textarea.form-control {
     </table>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/coffee/coffee-script.js"></script>
+    <script src="vendor/vconsole/vconsole.min.js"></script>
     <script>
-       $(".input").on("keyup", function() {
+       new VConsole;
+
+$(".input").on("keyup", function() {
   var x;
   try {
+    eval(CoffeeScript.compile($(this).val(), {
+      bare: true
+    }));
     return $(".output").val(CoffeeScript.compile($(this).val(), {
       bare: true
     }));
