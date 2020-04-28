@@ -1,0 +1,10 @@
+*
+	word-wrap break-word
+table
+	height 100vh
+	padding 0 !important
+	margin 0 !important
+td
+	padding 0 !important
+textarea.form-control
+	height 100vh

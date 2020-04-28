@@ -1,0 +1,20 @@
+doctype html
+html
+	head
+		link(rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css")
+		title Coffeescript
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		style
+			include:stylus index.stylus
+	body
+		table.table.table-bordered
+			tbody
+				tr
+					td: textarea.input.form-control
+					td: textarea.output.form-control(disabled)
+		//- script(src="vendor/live/live.js")
+		script(src="vendor/jquery/jquery.min.js")
+		script(src="vendor/coffee/coffee-script.js")
+		script 
+			include:coffee-script(bare=true) index.coffee

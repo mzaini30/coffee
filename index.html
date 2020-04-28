@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <title>Coffeescript</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>* {
+  word-wrap: break-word;
+}
+table {
+  height: 100vh;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+td {
+  padding: 0 !important;
+}
+textarea.form-control {
+  height: 100vh;
+}
+
+    </style>
+  </head>
+  <body>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>
+            <textarea class="input form-control"></textarea>
+          </td>
+          <td>
+            <textarea class="output form-control" disabled></textarea>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/coffee/coffee-script.js"></script>
+    <script>
+       $(".input").on("keyup", function() {
+  var x;
+  try {
+    return $(".output").val(CoffeeScript.compile($(this).val(), {
+      bare: true
+    }));
+  } catch (error) {
+    x = error;
+    return $(".output").val(x);
+  }
+});
+
+    </script>
+  </body>
+</html>
