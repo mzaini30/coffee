@@ -49,7 +49,11 @@ textarea.form-control {
     }));
     hasil12345 = [];
     console.log = function(x) {
-      return hasil12345.push(x);
+      if (typeof x === "object") {
+        return hasil12345.push(JSON.stringify(x));
+      } else {
+        return hasil12345.push(x);
+      }
     };
     eval(CoffeeScript.compile($(this).val(), {
       bare: true
