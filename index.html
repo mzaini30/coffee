@@ -42,19 +42,19 @@ textarea.form-control {
     <script src="vendor/coffee/coffee-script.js"></script>
     <script>
        $(".input").on("keyup", function() {
-  var hasil, x;
+  var hasil12345, x;
   try {
     $(".output").val(CoffeeScript.compile($(this).val(), {
       bare: true
     }));
-    hasil = [];
+    hasil12345 = [];
     console.log = function(x) {
-      return hasil.push(x);
+      return hasil12345.push(x);
     };
     eval(CoffeeScript.compile($(this).val(), {
       bare: true
     }));
-    return $(".console").val(hasil.join("\n"));
+    return $(".console").val(hasil12345.join("\n"));
   } catch (error) {
     x = error;
     $(".console").val(x);
