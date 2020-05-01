@@ -7,5 +7,5 @@ $(".input").on "keyup", ->
 		eval CoffeeScript.compile $(@).val(), bare: on
 		$(".console").val hasil.join "\n"
 	catch x
-		$(".output").val x
-		$(".console").val ""
+		$(".console").val x
+		$(".output").val ""
