@@ -27,32 +27,38 @@ textarea.form-control {
       <tbody>
         <tr>
           <td>
-            <textarea class="input form-control"></textarea>
+            <textarea class="input form-control" placeholder="Tulis Coffeescript di sini"></textarea>
           </td>
           <td>
             <textarea class="output form-control" disabled></textarea>
+          </td>
+          <td>
+            <textarea class="console form-control" disabled></textarea>
           </td>
         </tr>
       </tbody>
     </table>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/coffee/coffee-script.js"></script>
-    <script src="vendor/vconsole/vconsole.min.js"></script>
     <script>
-       new VConsole;
-
-$(".input").on("keyup", function() {
-  var x;
+       $(".input").on("keyup", function() {
+  var hasil, x;
   try {
+    $(".output").val(CoffeeScript.compile($(this).val(), {
+      bare: true
+    }));
+    hasil = [];
+    console.log = function(x) {
+      return hasil.push(x);
+    };
     eval(CoffeeScript.compile($(this).val(), {
       bare: true
     }));
-    return $(".output").val(CoffeeScript.compile($(this).val(), {
-      bare: true
-    }));
+    return $(".console").val(hasil.join("\n"));
   } catch (error) {
     x = error;
-    return $(".output").val(x);
+    $(".output").val(x);
+    return $(".console").val("");
   }
 });
 

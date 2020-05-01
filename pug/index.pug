@@ -11,11 +11,11 @@ html
 		table.table.table-bordered
 			tbody
 				tr
-					td: textarea.input.form-control
+					td: textarea.input.form-control(placeholder='Tulis Coffeescript di sini')
 					td: textarea.output.form-control(disabled)
+					td: textarea.console.form-control(disabled)
 		//- script(src="vendor/live/live.js")
 		script(src="vendor/jquery/jquery.min.js")
 		script(src="vendor/coffee/coffee-script.js")
-		script(src="vendor/vconsole/vconsole.min.js")
 		script 
 			include:coffee-script(bare=true) index.coffee
