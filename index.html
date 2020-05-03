@@ -27,7 +27,7 @@ textarea.form-control {
       <tbody>
         <tr>
           <td>
-            <textarea class="data form-control" placeholder="Masukkan data di sini. Nanti bisa diakses dengan $(&quot;.data&quot;).val() di bagian Coffeescript"></textarea>
+            <textarea class="data form-control" placeholder="Masukkan data di sini. Nanti bisa diakses dengan variabel &quot;data&quot; di bagian Coffeescript"></textarea>
           </td>
           <td>
             <textarea class="input form-control" placeholder="Tulis Coffeescript di sini"></textarea>
@@ -44,10 +44,11 @@ textarea.form-control {
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/coffee/coffee-script.js"></script>
     <script>
-       $(".input").on("keyup", function() {
-  var hasil12345, x;
+       $(".form-control").on("keyup", function() {
+  var data, hasil12345, x;
   try {
-    $(".output").val(CoffeeScript.compile($(this).val(), {
+    data = $(".data").val();
+    $(".output").val(CoffeeScript.compile($(".input").val(), {
       bare: true
     }));
     hasil12345 = [];
@@ -58,7 +59,7 @@ textarea.form-control {
         return hasil12345.push(x);
       }
     };
-    eval(CoffeeScript.compile($(this).val(), {
+    eval(CoffeeScript.compile($(".input").val(), {
       bare: true
     }));
     return $(".console").val(hasil12345.join("\n"));
